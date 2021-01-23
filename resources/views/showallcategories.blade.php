@@ -3,9 +3,9 @@
 @section('content')
 
 <div class="card" style="border-width:1px; border-color:#9affcc;">
-    <div class="card-header d-flex text-center" style="background-color:#9affcc;"><a 
-        {{-- href="/channels/create" --}}
-            class=" flex-fill btn btn-light" style="border-color:#00ff80; background-color:#e7fff3;">Create a new
+    <div class="card-header d-flex text-center" style="background-color:#9affcd85;"><a 
+        href="{{route('category.create')}}"
+            class=" flex-fill btn btn-light" style="border-color:aqua; background-color:#fbfdfc;">Create a new
             Category</a></div>
 
     <div class="card-body" style="background-color:#fafafa; border-color:#9affcc;">
@@ -30,15 +30,15 @@
                     <td class="text-center">{{ $category->title}}</td>
                     <td>
                         <a 
-                        {{-- href="{{route('category.edit',['category'=>$category->id])}}" --}}
+                        href="{{route('category.edit',['id'=>$category->id])}}"
                             class="btn text-white btn-xs btn-info">Edit</a>
                     </td>
                     <td>
                         <form 
-                        {{-- action="{{route('category.destroy',['channel'=>$category->id])}}"  --}}
+                        action="{{route('category.delete',['id'=>$category->id])}}" 
                         method="POST">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
+                            @csrf
+                            @method('delete')
                             <button class="btn btn-xs btn-danger" type="submit">Delete</button>
                         </form>
 
