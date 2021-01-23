@@ -72,9 +72,35 @@
             </div>
         </nav>
 
-        <main class="py-4">
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <a href="{{route('post.create')}}" class="form-control mt-2 btn btn-primary">Create a new
+                post</a>
+            <a href="{{route('admin.inbox')}}" class="form-control btn text-white mt-2" style="background-color:#9370db;">My
+                posts</a>
+            
+            <div class="card card-primary mt-2">
+                <div class="card-header text-center" style="background-color:#e45fa8; color:white;">
+                    <a class="text-white" style="text-decoration:none;">Categories</a>
+                </div>
+                <div class="card-body" style="background-color:#fae1ef; text-align:center;">
+                    @foreach ($categories as $category)
+                    <li class="list-group-item" style="background-color:#fef7fb;">
+                        <a 
+                        href="{{route('category',['slug'=>$category->slug])}}"
+                            style="text-decoration:none;color:#EA75AC;">{{$category->title}}</a>
+                    </li>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
             @yield('content')
-        </main>
+        </div>
+    </div>
+</div>
+</main>
     </div>
 </body>
 </html>

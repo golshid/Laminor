@@ -40,4 +40,9 @@ Route::group(['middleware' => 'auth'], function () {
         'as' => 'admin.inbox'
     ]);
 
+    Route::get('category/{slug}', [
+        'uses' => 'CategoryController@findcategory',
+        'as' => 'category'
+    ]);
+
 });

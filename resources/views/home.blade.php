@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+        {{-- <div class="col-md-8"> --}}
+            {{-- <div class="card">
                 <div class="card-header text-center">{{ __('Dashboard') }}</div>
 
                 <div class="card-body row">
@@ -23,13 +23,13 @@
                         <a href="" class="btn btn-info">Edit categories</a>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div> --}}
+        {{-- </div> --}}
     </div>
 </div>
-<div class="container mt-5">
+<div class="container ">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        {{-- <div class="col-md-8"> --}}
             <div class="card text-center">
                 <div class="card-header">
                     Latest Posts
@@ -59,7 +59,7 @@
                                     </a>
                                     <div class="d-flex flex-row">
                                         <a 
-                                        {{-- href="{{route('channel',['slug'=>$d->channel->slug])}}" --}}
+                                        href="{{route('category',['slug'=>$d->category->slug])}}"
                                             class=" btn p-2 mt-1 btn-light btn-sm">{{$d->category->title}}</a>
                                     </div>
                                 </div>
@@ -72,14 +72,13 @@
                     </div>
                     <br>
                     @endforeach
-                    
-                    <div class="text-center row  justify-content-center my-5">
-                        {{$posts->links()}}
-                    </div>
     
                 </div>
             </div>
-        </div>
+        {{-- </div> --}}
     </div>
 </div>
+<div class="text-center row  justify-content-center my-5">
+                        {{$posts->links()}}
+                    </div>
 @endsection
