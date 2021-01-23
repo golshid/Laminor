@@ -36,6 +36,7 @@
                 </div>
                 <div class="card-body">
                     @foreach ($posts as $d)
+                    @if ($d-> status = 1)
                     <div class="card">
                         <div class="card-body d-flex flex-row">
                             <div class="p-2">
@@ -71,6 +72,7 @@
                         </div>
                     </div>
                     <br>
+                    @endif
                     @endforeach
     
                 </div>
