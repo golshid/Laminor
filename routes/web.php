@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
         'as' => 'showpost'
     ]);
 
-    Route::get('showallcategories',[
+    Route::get('category',[
         'uses'=> 'CategoryController@showallcategories',
         'as' => 'showallcategories'
 
