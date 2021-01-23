@@ -25,21 +25,21 @@
     </div>
     <div class="card-footer">
         <span>Submitted by {{$d->user->name}}, {{$d->created_at->diffForHumans()}}</span>
-        {{-- @auth
-        @if (Auth::user()->admin > 0)
-        @if($d->open == 1)
-        <a href="{{ route('discussion.close', ['id' => $d->id ]) }}"
-            class="btn btn-outline-danger btn-sm float-right ml-2 ">Close Discussion</a>
+        @auth
+        @if (Auth::id() == $d->user->id)
+        @if($d->status == 1)
+        <a href="{{ route('post.disable', ['id' => $d->id ]) }}"
+            class="btn btn-outline-danger btn-sm float-right ml-2 ">Disable Discussion</a>
         @else
-        <a href="{{ route('discussion.open', ['id' => $d->id ]) }}"
-            class="btn btn-outline-success btn-sm float-right ml-2 ">Open Discussion</a>
+        <a href="{{ route('post.enable', ['id' => $d->id ]) }}"
+            class="btn btn-outline-success btn-sm float-right ml-2 ">Enable Discussion</a>
         @endif
         @endif
         @if(Auth::id() == $d->user->id)
-        <a href="{{ route('discussion.edit', ['slug' => $d->slug ]) }}"
+        <a href="{{ route('post.edit', ['slug' => $d->slug ]) }}"
             class="btn btn-outline-info btn-sm float-right">Edit</a>
         @endif
-        @endauth --}}
+        @endauth
     </div>
 </div>
 <br>

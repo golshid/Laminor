@@ -73,4 +73,40 @@ class PostController extends Controller
         return redirect()->back();
     }
 
+    public function disablepost($id)
+    {
+        $post = Post::find($id);
+        $post->status = 0;
+        $post->save();
+        return redirect()->back();
+    }
+
+    public function enablepost($id)
+    {
+        $post = Post::find($id);
+        $post->status = 1;
+        $post->save();
+        return redirect()->back();
+    }
+
+    public function edit($slug)
+    {
+        return view('editpost', ['post' => Post::where('slug', $slug)->first()])->with('categories', Category::all());
+    }
+
+    public function update($id)
+    {
+        $this->validate(request(), [
+            'title'=> 'required',
+            'content' => 'required'
+        ]);
+
+        $d = Post::find($id);
+        $d->content = request()->content;
+        $d->title = request()->title;
+        $d->save();
+        Session::flash('success', 'Post successfully updated');
+        return redirect()->route('showpost', ['slug' => $d->slug]);
+    }
+
 }

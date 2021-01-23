@@ -61,4 +61,24 @@ Route::group(['middleware' => 'auth'], function () {
         'as' => 'post.comment'
     ]);
 
+    Route::get('/post/disable/{id}', [
+        'uses' => 'PostController@disablepost',
+        'as' => 'post.disable'
+    ]);
+
+    Route::get('/post/enable/{id}', [
+        'uses' => 'PostController@enablepost',
+        'as' => 'post.enable'
+    ]);
+
+    Route::get('/post/edit/{slug}', [
+        'uses' => 'PostController@edit',
+        'as' => 'post.edit'
+    ]);
+
+    Route::post('/post/update/{id}', [
+        'uses' => 'PostController@update',
+        'as' => 'post.update'
+    ]);
+
 });
