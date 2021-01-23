@@ -42,7 +42,23 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('category/{slug}', [
         'uses' => 'CategoryController@findcategory',
-        'as' => 'category'
+        'as' => 'find.category'
+    ]);
+
+    Route::get('blog/{slug}', [
+        'uses' => 'PostController@showpost',
+        'as' => 'showpost'
+    ]);
+
+    Route::get('category/showall',[
+        'uses'=> 'CategoryController@showallcategories',
+        'as' => 'showallcategories'
+
+    ]);
+
+    Route::post('/post/comment/{id}', [
+        'uses' => 'PostController@reply',
+        'as' => 'post.comment'
     ]);
 
 });

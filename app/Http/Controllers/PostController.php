@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
 use App\Category;
+use App\Comment;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -35,8 +36,8 @@ class PostController extends Controller
 
         ]);
         Session::flash('success', 'Post successfully created.');
-        // return redirect()->route('post', ['slug' => $post->slug]);
-        return view('home');
+        return redirect()->route('showpost', ['slug' => $post->slug]);
+        
 
         
     }
@@ -53,5 +54,23 @@ class PostController extends Controller
         return view('myposts')->with('categories', Category::all())->with('posts', $posts);
     }
 
+    public function showpost($slug)
+    {
+        $post = Post::where('slug', $slug)->first();
+        return view('eachpost')->with('d', $post)->with('categories', Category::all());
+    }
+
+    public function reply($id)
+    {
+        $d = Post::find($id);
+        $comment = Comment::create([
+            'user_id' => Auth::id(),
+            'post_id' => $id,
+            'content' => request()->comment
+        ]);
+
+        Session::flash('success', 'Commented on the post.');
+        return redirect()->back();
+    }
 
 }

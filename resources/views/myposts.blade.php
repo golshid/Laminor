@@ -26,11 +26,11 @@
                             <div class="p-2 ml-2">
                                 <div class="d-flex flex-column">
                                     <a class="mt-2" style="text-decoration:none; color:#326273;"
-                                        {{-- href="{{route('discussion',['slug'=>$d->slug])}}" --}}>
+                                       href="{{route('showpost',['slug'=>$d->slug])}}">
                                         <h5>{{ $d->title}}</h5>
                                     </a>
                                     <div class="d-flex flex-row">
-                                        <a {{-- href="{{route('channel',['slug'=>$d->channel->slug])}}" --}}
+                                        <a href="{{route('find.category',['slug'=>$d->category->slug])}}"
                                             class=" btn p-2 mt-1 btn-light btn-sm">{{$d->category->title}}</a>
                                     </div>
                                 </div>

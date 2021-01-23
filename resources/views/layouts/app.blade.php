@@ -82,13 +82,13 @@
             
             <div class="card card-primary mt-2">
                 <div class="card-header text-center" style="background-color:#e45fa8; color:white;">
-                    <a class="text-white" style="text-decoration:none;">Categories</a>
+                    <a href="{{route('showallcategories')}}" class="text-white" style="text-decoration:none;">Categories</a>
                 </div>
                 <div class="card-body" style="background-color:#fae1ef; text-align:center;">
                     @foreach ($categories as $category)
                     <li class="list-group-item" style="background-color:#fef7fb;">
                         <a 
-                        href="{{route('category',['slug'=>$category->slug])}}"
+                        href="{{route('find.category',['slug'=>$category->slug])}}"
                             style="text-decoration:none;color:#EA75AC;">{{$category->title}}</a>
                     </li>
                     @endforeach
