@@ -20,3 +20,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::resource('categories', 'CategoryController');
+
+    Route::get('post/create/', [
+        'uses' => 'PostController@create',
+        'as' => 'post.create'
+    ]);
+
+    Route::post('post/store', [
+        'uses' => 'PostController@store',
+        'as' => 'post.store'
+    ]);
+
+});
