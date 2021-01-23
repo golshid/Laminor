@@ -4,35 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header text-center">{{ __('Dashboard') }}</div>
-
-                <div class="card-body row">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <div class="card col-sm">
-                        <a href="{{route('admin.inbox')}}" class="btn btn-info">My Posts</a>
-                    </div>
-                    <div class="card col-sm">
-                        <a href="{{route('post.create')}}" class="btn btn-success">Add a New Post</a>
-                    </div>
-                    <div class="card col-sm">
-                        <a href="" class="btn btn-info">Edit categories</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
             <div class="card text-center">
                 <div class="card-header">
-                    Latest Posts
+                    My Posts
                 </div>
                 <div class="card-body">
                     @foreach ($posts as $d)
@@ -49,34 +23,32 @@
                                     </div>
                                 </div>
                             </div>
-                    
+
                             <div class="p-2 ml-2">
                                 <div class="d-flex flex-column">
                                     <a class="mt-2" style="text-decoration:none; color:#326273;"
-                                        {{-- href="{{route('discussion',['slug'=>$d->slug])}}" --}}
-                                        >
+                                        {{-- href="{{route('discussion',['slug'=>$d->slug])}}" --}}>
                                         <h5>{{ $d->title}}</h5>
                                     </a>
                                     <div class="d-flex flex-row">
-                                        <a 
-                                        {{-- href="{{route('channel',['slug'=>$d->channel->slug])}}" --}}
+                                        <a {{-- href="{{route('channel',['slug'=>$d->channel->slug])}}" --}}
                                             class=" btn p-2 mt-1 btn-light btn-sm">{{$d->category->title}}</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer">
-    
+
                             <span>Submitted by {{$d->user->name}}, {{$d->created_at->diffForHumans()}}</span>
                         </div>
                     </div>
                     <br>
                     @endforeach
-                    
+
                     <div class="text-center row  justify-content-center my-5">
                         {{$posts->links()}}
                     </div>
-    
+
                 </div>
             </div>
         </div>

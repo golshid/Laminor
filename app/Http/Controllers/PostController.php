@@ -40,4 +40,18 @@ class PostController extends Controller
 
         
     }
+
+    public function index()
+    {
+        $posts = Post::where('status', 1)->orderBy('created_at', 'desc')->paginate(3);
+        return view('home', ['posts' => $posts]);
+    }
+
+    public function admininbox()
+    {
+        $posts = Post::where('user_id', Auth::id())->orderBy('created_at', 'desc')->paginate(3);
+        return view('myposts', ['posts' => $posts]);
+    }
+
+
 }

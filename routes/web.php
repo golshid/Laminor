@@ -30,9 +30,14 @@ Route::group(['middleware' => 'auth'], function () {
         'as' => 'post.create'
     ]);
 
-    Route::post('post/store', [
+    Route::post('post/store/', [
         'uses' => 'PostController@store',
         'as' => 'post.store'
+    ]);
+
+    Route::get('post/inbox/', [
+        'uses' => 'PostController@admininbox',
+        'as' => 'admin.inbox'
     ]);
 
 });
